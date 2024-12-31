@@ -1,0 +1,93 @@
+/* Apply box-sizing globally for better layout control */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Set the background color for the entire page */
+body {
+    background-color: #121212; /* Dark background */
+    color: #f0f0f0; /* Light text for contrast */
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Ensure the container is responsive */
+.container {
+    width: 90%;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #1e1e1e; /* Dark container */
+    border-radius: 12px; /* Curved corners for container */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Optional shadow for a smooth look */
+}
+
+/* Add responsiveness for mobile devices */
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+        padding: 15px;
+    }
+    
+    button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+/* Style for input and select fields with rounded corners */
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px; /* Curved edges for inputs */
+    border: 1px solid #444; /* Darker border */
+    background-color: #333; /* Dark background for input fields */
+    color: #f0f0f0; /* Light text inside inputs */
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Adjust input focus color */
+input:focus, select:focus {
+    transform: scale(1.05);
+    background: #444; /* Darker background on focus */
+    border-color: #ff7eb3; /* Vibrant pink border on focus */
+    outline: none;
+}
+
+/* Button with curved edges and vibrant accent color */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #ff7eb3; /* Vibrant pink button */
+    color: #fff;
+    border: none;
+    border-radius: 8px; /* Curved edges for button */
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Button hover effect color */
+button:hover {
+    transform: scale(1.1);
+    background: #ff4d7b; /* Slightly darker pink on hover */
+}
+
+/* Button active state (when clicked) */
+button:active {
+    transform: scale(1.05);
+    background: #ff337a; /* Even darker pink on active */
+}
+
+/* Error message styling */
+.error {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #ff4d7b; /* Vibrant pink error message */
+    font-size: 14px;
+}
