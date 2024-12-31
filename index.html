@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information</title>
+    <link href="styles.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container animate__animated animate__fadeIn">
+        <h2>Student Information</h2>
+        <form onsubmit="displayStudentInfo(event)">
+            <div class="form-group">
+                <label for="studentId">Student Register Number:</label>
+                <input type="text" id="studentId" maxlength="12" placeholder="Enter Register Number" required>
+            </div>
+            <div class="form-group">
+                <label for="studentName">Student Name:</label>
+                <input type="text" id="studentName" placeholder="Enter Student Name" required>
+            </div>
+            <div class="form-group">
+                <label for="qualifyingMarks">Total Marks (Out of 700):</label>
+                <input type="number" id="qualifyingMarks" min="0" max="700" placeholder="Enter Your Total Marks" required>
+            </div>
+            <div class="form-group">
+                <label for="yearOfEngg">Batch Year:</label>
+                <input type="text" id="yearOfEngg" maxlength="9" pattern="\\d{4}-\\d{4}" title="Enter Batch Year in the format YYYY-YYYY (e.g., 2020-2024)" placeholder="Enter Batch Year (e.g., 2020-2024)" required>
+            </div>            
+            <div class="form-group">
+                <label for="residence">Residence:</label>
+                <select id="residence" required>
+                    <option value="">Select Residence</option>
+                    <option value="H">Hosteller</option>
+                    <option value="D">Dayscholar</option>
+                </select>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+
+        <div class="output" id="output"></div>
+    </div>
+    <script>
+        // JavaScript for dynamic input validation
+        document.getElementById('qualifyingMarks').addEventListener('input', function (e) {
+            if (e.target.value < 0) {
+                e.target.value = 0; // Prevent negative numbers
+            }
+        });
+
+        function displayStudentInfo(event) {
+            event.preventDefault();
+            const studentId = document.getElementById('studentId').value;
+            const studentName = document.getElementById('studentName').value;
+            const qualifyingMarks = document.getElementById('qualifyingMarks').value;
+            const yearOfEngg = document.getElementById('yearOfEngg').value;
+            const residence = document.getElementById('residence').value;
+
+            const output = `
+                <h3>Student Details</h3>
+                <p><strong>Register Number:</strong> ${studentId}</p>
+                <p><strong>Name:</strong> ${studentName}</p>
+                <p><strong>Total Marks:</strong> ${qualifyingMarks}</p>
+                <p><strong>Batch Year:</strong> ${yearOfEngg}</p>
+                <p><strong>Residence:</strong> ${residence === 'H' ? 'Hosteller' : 'Dayscholar'}</p>
+            `;
+
+            document.getElementById('output').innerHTML = output;
+        }
+    </script>
+</body>
+</html>
